@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,13 +8,20 @@
 </head>
 <body>
     <nav>
-        <a href="/">Home</a> | 
+        <a href="/">Home</a> |
         <a href="/registration">Registration</a> | 
         <a href="/login">Login</a> | 
         <a href="/manage">Manage</a> |
         <a href="/settings">Settings</a>        
     </nav>
-    <h1>Manage</h1>
+    <h1>Result</h1>
+
+    {% if failed %}
+        <p>Erreur</p>
+    {% else %}
+        <p>Ok</p>
+    {% endif %}
+    
 </body>
 </html>
 

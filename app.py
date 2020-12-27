@@ -1,7 +1,20 @@
-from flask import Flask, render_template
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager
 
+
+# instantiate application
 app = Flask(__name__)
+app.config['SECRET_KEY'] = "very-confidential-secret"
 
-@app.route("/")
-def index():
-    return render_template("index.html")
+# instantiate database
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///payprof.db"
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
+
+# create login manager
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = "login"
+
+import routes, models

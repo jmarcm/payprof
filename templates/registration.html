@@ -3,38 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet"> 
     <title>Payprof</title>
 </head>
 <body>
     <nav>
-        <a href="/">Home</a> | 
+        <a href="/">Home</a> |
         <a href="/registration">Registration</a> | 
         <a href="/login">Login</a> | 
         <a href="/manage">Manage</a> |
         <a href="/settings">Settings</a>        
     </nav>
-    <h1>Login</h1>
+    <h1>Registration</h1>
 
-    <form method="post">
+    <form method="POST">
         {{ form.hidden_tag() }}
         <p>
             {{ form.username.label }}
-            {{ form.username()}}
+            {{ form.username() }}
         </p>
         <p>
             {{ form.password.label }}
-            {{ form.password( )}}
+            {{ form.password() }}
         </p>
         <p>
-            {{ form.remember.label }}
-            {{ form.remember() }}
+            {{ form.password2.label }}
+            {{ form.password2() }}
         </p>
-        <p>{{ form.login() }}</p>
-        
+        <p>
+            {{ form.register() }}
+        </p>
     </form>
+
 </body>
 </html>
 
