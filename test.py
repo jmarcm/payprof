@@ -1,7 +1,12 @@
 # -*- coding: utf8 -*-
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, date
 
 print(datetime.now())
+# print("today", date(2020, 12, 7))
+datetime.strptime('Jun 1 2005  1:33PM', '%b %d %Y %I:%M%p')
+
+new_time = datetime.strptime("2020-12-28", "%Y-%m-%d")
+print("new time", new_time)
 
 """
 Les cours ont lieu le jeudi soir à 18h30

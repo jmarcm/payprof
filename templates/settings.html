@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payprof</title>
 </head>
+
 <body>
+
     <nav>
         <a href="/">Home</a> | 
         <a href="/registration">Registration</a> | 
@@ -13,15 +16,55 @@
         <a href="/manage">Manage</a> |
         <a href="/settings">Settings</a>        
     </nav>
+
     <h1>Settings</h1>
 
     <h2>Liste des cours</h2>
 
+        <ul>
+            {% for course in courses %}
+                <li>{{course.name}}</li>
+            {% endfor %}
+        </ul>
+    
+
+
     <h2>Add a course</h2>
-    <form method="post">
-        
+
+    {% for category, message in get_flashed_messages(with_categories=true) %}
+        {% if category == "add_course" %}
+            <p class="{{ category }}">{{ message }}</p>
+        {% endif %}
+    {% endfor %}
+
+    <form id="add-course" method="post">
+
+        {{ form.hidden_tag() }}
+
+        <p>
+            <span>{{ form.name.label }}</span>
+            <span>{{ form.name() }}</span>
+        <!-- </p> -->
+        <p>
+            <span>{{ form.meeting_day.label }}</span>
+            <span>{{ form.meeting_day() }}</span>
+        </p>
+        <p>
+            <span>{{ form.meeting_time.label }}</span>
+            <span>{{ form.meeting_time() }}</span>
+        </p>
+        <p>
+            <span>{{ form.price.label }}</span>
+            <span>{{ form.price() }}</span>
+        </p>
+        <p>
+            {{ form.send() }}
+        </p>
+
     </form>
+
 </body>
+
 </html>
 
 

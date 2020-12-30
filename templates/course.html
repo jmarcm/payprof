@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payprof</title>
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a> | 
+        <a href="/registration">Registration</a> | 
+        <a href="/login">Login</a> | 
+        <a href="/manage">Manage</a> |
+        <a href="/settings">Settings</a>        
+    </nav>
+
+    <h1>{{ course.name }}</h1>
+
+    <form action="" method="post">
+        
+        {{ update_form.hidden_tag() }}
+
+        {% for session in update_form.sessions %}
+            <p>
+                {{ session.form.id() }}
+
+                {{ session.form.date() }}
+                {% for error in session.form.date.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+
+                {{ session.form.paid() }}
+                {% for error in session.form.paid.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+                
+            </p>
+        {% endfor %}
+
+        {{ update_form.update() }}
+    </form>
+
+    
+
+    <h3>Ajouter une session</h3>
+
+    <form method="POST">
+        
+        {{ add_form.hidden_tag() }}
+
+        <p>
+            {{ add_form.date.label}}
+            {{ add_form.date() }}
+        </p>
+
+        <p>
+            {{ add_form.paid.label }}
+            {{ add_form.paid() }}
+        </p>
+
+        <p>
+            {{ add_form.add() }}
+        </p>
+
+    </form>
+
+   
+</body>
+</html>

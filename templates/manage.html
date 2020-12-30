@@ -14,6 +14,12 @@
         <a href="/settings">Settings</a>        
     </nav>
     <h1>Manage</h1>
+    <ul>
+        {% for course in courses %}
+            <li><a href="/course/{{ course.id }}">{{ course.name }}</a></li>
+        {% endfor %}
+    </ul>
+    
 </body>
 </html>
 
