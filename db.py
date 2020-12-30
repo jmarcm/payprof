@@ -1,21 +1,31 @@
 from app import db
 from models import *
 from forms import PaySessionForm
+from functions import *
 
+user = User.query.get(1)
+print(user)
 
-course_id = 2
+courses = user.courses.all()
+# courses = db.relationship("Course", backref="student", lazy="dynamic")
+# print(courses)
 
+# total_price = 0
+# all_courses_to_pay = {}
+# for course in courses:
+#     print(course)
+#     sessions = course.sessions.filter_by(paid=False).all()
+#     all_courses_to_pay[course] = sessions
+#     print(sessions)
+#     price_to_pay = len(sessions) * course.price
+#     print(price_to_pay)
+#     total_price += price_to_pay
 
+courses, amount_due = get_user_all_courses_unpaid(1)
 
-course = Course.query.get(course_id)
-sessions = course.sessions.all()
+print(courses)
 
-# print(course)
-# print(sessions)
-
-# calculer le montant des cours restants à payer
-to_pay = [session for session in sessions if not session.paid]
-price_to_pay = len(to_pay) * course.price
-price_to_pay = '{0:.2f}'.format(price_to_pay)
-print(to_pay)
-print(price_to_pay)
+for course in courses:
+    print(course[0].name)
+    print(course[1])
+    print(courses[course])

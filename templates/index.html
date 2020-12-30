@@ -1,34 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Payprof</title>
-    </head>
-    <body>
-        <nav>
-            <a href="/">Home</a> |
-            <a href="/registration">Registration</a> |
-            <a href="/login">Login</a> |
-            <a href="/manage">Manage</a> |
-            <a href="/settings">Settings</a> |
-            <a href="/logout">Logout</a>
-        </nav>
-        
+{% extends "base.html" %}
+    {% block content %}
+
         {% if current_user.is_authenticated %}
-            <h1>Bienvenue {{current_user.username}} !</h1>
-            <h2>Voici la liste de vos sessions en attente de paiement</h2>{{ courses }}
-            <ul>
-                {% for course in courses %}
-                    <li>
-                        <a href="/course/{{ course.id }}">
-                            {{ course.name }}
-                        </a>
-                    </li>
-                {% endfor %}
-            </ul>
+        <h2>Bienvenue {{ current_user.username }} !</h2>
+        <h3>Vos sessions en attente de paiement</h3>
+        <p id="amount-due">
+            <span class="label">Total amount due:</span>
+            <span class="value">{{ amount_due }}</span>
+        </p>
+        <ul>
+            {% for course in courses %}
+            <li>
+                <a href="/course/{{ course[0].id }}">
+                    {{ course[0].name }}
+                </a>
+                <span class="pull-right">{{ course[1] }}</span>
+                <ul>
+                    {% for session in courses[course] %}
+                    <li>{{ session.date }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+            {% endfor %}
+        </ul>
         {% else %}
-            <h1>Bienvenue !</h1>
+        <h1>Bienvenue !</h1>
         {% endif %}
-    </body>
-</html>
+    {% endblock %}

@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 from models import User, Course, Session
 from forms import *
 from flask_login import current_user, login_user, logout_user, login_required
-from functions import set_dict
+from functions import *
 
 
 @app.route("/registration", methods=['GET', 'POST'])
@@ -160,5 +160,6 @@ def settings():
 
 @app.route("/")
 def index():
-    courses = Course.query.filter_by(user_id=current_user.get_id()).all()
-    return render_template("index.html", courses=courses)
+    # courses = Course.query.filter_by(user_id=current_user.get_id()).all()
+    courses, amount_due = get_user_all_courses_unpaid(current_user.get_id())
+    return render_template("index.html", courses=courses, amount_due=amount_due)

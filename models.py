@@ -14,7 +14,7 @@ class User(UserMixin, db.Model):
     courses = db.relationship("Course", backref="student", lazy="dynamic")
 
     def __repr__(self):
-        return "<User {}>".format(self.username)
+        return "{}".format(self.username)
 
     def setPassword(self, password):
         self.password_hash = generate_password_hash(password)

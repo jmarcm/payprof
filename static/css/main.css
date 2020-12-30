@@ -1,4 +1,40 @@
 body {
     font-family: 'Open Sans', sans-serif;
-    background: yellow;
+    margin: 1.5em;
+}
+
+navbar {
+    display: flex;
+    justify-content: space-between;
+}
+
+h1,
+h2,
+h3 {
+    text-align: center;
+}
+
+h1 {
+    padding-bottom: 1px;
+    border-bottom: 1px dotted darkmagenta;
+}
+
+
+.pull-right {
+    float: right;
+}
+
+/* HOME */
+#amount-due {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.value {
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: large;
+    font-weight: 600;
 }
