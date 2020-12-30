@@ -14,10 +14,14 @@
         <a href="/settings">Settings</a>        
     </nav>
 
-    <h1>{{ course.name }}</h1>
+    <h1>Course: {{ course.name }}</h1>
+
+    {% if price_due %}
+        <h2>Price due = {{price_due}} €</h2>
+    {% endif %}
 
     <form action="" method="post">
-        
+
         {{ update_form.hidden_tag() }}
 
         {% for session in update_form.sessions %}

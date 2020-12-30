@@ -45,7 +45,7 @@ class Session(db.Model):
     course_id = db.Column(db.Integer, db.ForeignKey("course.id"))
 
     def __repr__(self):
-        paid = "paid" if self.paid else ""
-        return "Session #{} du {}, {}".format(self.id, self.date, paid)
+        paid = ", paid" if self.paid else ""
+        return "Session #{} du {}{}".format(self.id, self.date, paid)
 
 

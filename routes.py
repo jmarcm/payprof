@@ -78,6 +78,10 @@ def course(course_id):
     sessions = course.sessions.all()
     db_sessions = set_dict(sessions)
 
+    # calculate the amount due
+    sessions_due = [session for session in sessions if not session.paid]
+    price_due = '{0:.2f}'.format(len(sessions_due) * course.price)
+
     # Add (new) entries to form
     if len(update_form.sessions.data) == 0:
         session_info = {}
@@ -105,9 +109,9 @@ def course(course_id):
 
     if add_form.validate_on_submit():
         session = Session(
-            date=add_form.date.data,
-            paid=add_form.paid.data,
-            course_id=course_id
+            date = add_form.date.data,
+            paid = add_form.paid.data,
+            course_id = course_id
         )
         db.session.add(session)
 
@@ -120,7 +124,7 @@ def course(course_id):
         return redirect(url_for("course", course_id=course_id))
 
     return render_template(
-        "course.html", add_form=add_form, update_form=update_form, course=course
+        "course.html", add_form=add_form, update_form=update_form, course=course, price_due=price_due
     )
 
 
