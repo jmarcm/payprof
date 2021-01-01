@@ -157,6 +157,20 @@ nav a {
     /* color: cadetblue; */
 }
 
+.container {
+    margin-left: 0.3em;
+    margin-right: 0.3em;
+}
+
+@media (min-width: 992px) {
+    .container {
+        width: 30px;
+        min-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
 /* HOME */
 #amount-due {
     display: flex;
@@ -177,6 +191,11 @@ nav a {
     grid-gap: 1em;
 }
 
+#all-courses .btn {
+    width: auto;
+    justify-content: space-between
+}
+
 .btn .badge {
     background: white;
     color: brown;
@@ -192,8 +211,12 @@ nav a {
 
 @media (min-width: 992px) {
     #all-courses {
-        grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
-        grid-column-gap: 2em;
+        display: flex;
+        justify-content: center;
+    }
+
+    #all-courses li {
+        flex-basis: 10em;
     }
 
     #amount-due {
