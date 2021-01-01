@@ -1,6 +1,6 @@
 body {
     font-family: 'Open Sans', sans-serif;
-    margin: 1.5em;
+    /* margin: 1.5em; */
 }
 
 @media (min-width: 992px) {
@@ -73,6 +73,58 @@ h1 {
     }
 }
 
+.alert {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.alert-warning {
+    background-color: #fff9db;
+}
+
+.alert .icon {
+    background-color: #ffe066;
+    color: #fab005;
+}
+
+.alert i {
+    line-height: 1.8em;
+}
+
+.alert .text {
+    padding: 1em;
+}
+
+@media (min-width: 992px) {
+    .alert {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .alert .icon {
+        padding: 0.8em;
+    }
+}
+
+input[type="text"],
+input[type="password"],
+input[type="submit"] {
+    display: block;
+    padding: 6px 12px;
+    color: #555;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: large;
+}
+
+input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-left: 0.7em;
+}
+
 /* NAVBAR */
 nav ul {
     padding: 0;
@@ -142,4 +194,24 @@ nav a {
     .unpaid-sessions {
         grid-template-columns: auto;
     }
+}
+
+@media (min-width: 992px) {
+    #wrapper {
+        width: 50%;
+        min-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* LOGIN */
+
+form p {
+    display: flex;
+    flex-direction: column;
+}
+
+.remember-me {
+    flex-direction: row;
 }

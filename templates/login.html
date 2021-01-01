@@ -1,45 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet"> 
-    <title>Payprof</title>
-</head>
-<body>
-    <nav>
-        <a href="/">Home</a> | 
-        <a href="/registration">Registration</a> | 
-        <a href="/login">Login</a> | 
-        <a href="/manage">Manage</a> |
-        <a href="/settings">Settings</a>        
-    </nav>
-    <h1>Login</h1>
+{% extends "base.html" %}
 
-    {% if current_user.is_authenticated %}
-        <p>Un utilisateur est déjà connecté</p>
-    {% endif %}
+    {% block content %}
 
-    <form method="post">
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.username.label }}
-            {{ form.username()}}
-        </p>
-        <p>
-            {{ form.password.label }}
-            {{ form.password( )}}
-        </p>
-        <p>
-            {{ form.remember.label }}
-            {{ form.remember() }}
-        </p>
-        <p>{{ form.login() }}</p>
+        <section id="wrapper">
+
+
+            <h2>Login</h2>
+
+        {% if current_user.is_authenticated %}
+            <div class="alert alert-warning">
+                <span class="icon">
+                    <i class="fas fa-exclamation-triangle fa-lg fa-fw"></i>
+                </span>                
+                <span class="text">Un utilisateur est déjà connecté</span>
+            </div>
+        {% endif %}
+
+        <form method="post">
+            {{ form.hidden_tag() }}
+            <p class="username">
+                {{ form.username.label }}
+                {{ form.username()}}
+            </p>
+            <p class="password">
+                {{ form.password.label }}
+                {{ form.password( )}}
+            </p>
+            <p class="remember-me">
+                {{ form.remember.label }}
+                {{ form.remember() }}
+            </p>
+            <p>{{ form.login() }}</p>
+            
+        </form>
         
-    </form>
-</body>
-</html>
+        </section>
+        
+        
 
-
+    {% endblock %}

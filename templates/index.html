@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+
     {% block content %}
 
         {% if current_user.is_authenticated %}
@@ -27,4 +28,5 @@
         {% else %}
         <h1>Bienvenue !</h1>
         {% endif %}
+
     {% endblock %}
