@@ -3,9 +3,17 @@ body {
     margin: 1.5em;
 }
 
-navbar {
-    display: flex;
-    justify-content: space-between;
+@media (min-width: 992px) {
+    body {
+        width: 60%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+ul {
+    padding-left: 0;
+    list-style-type: none;
 }
 
 h1,
@@ -24,6 +32,62 @@ h1 {
     float: right;
 }
 
+.btn {
+    padding: 0.3em 0.5em;
+    background: #777;
+    border: 1px solid #777;
+    border-radius: 4px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5em;
+    text-decoration: none;
+}
+
+.btn-brown {
+    background: brown;
+    border-color: brown;
+    color: white;
+}
+
+.badge {
+    display: inline-block;
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: smaller;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    background-color: #777;
+    border-radius: 10px;
+}
+
+@media (min-width: 992px) {
+    .btn {
+        width: fit-content;
+        justify-content: flex-start;
+    }
+}
+
+/* NAVBAR */
+nav ul {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav li ~ li {
+    margin-left: 1em;
+}
+
+nav a {
+    color: cadetblue;
+}
+
 /* HOME */
 #amount-due {
     display: flex;
@@ -31,10 +95,51 @@ h1 {
     align-items: center;
 }
 
-.value {
+#amount-due .value {
     border: 1px solid;
     border-radius: 10px;
     padding: 5px;
     font-size: large;
     font-weight: 600;
+}
+
+#all-courses {
+    display: grid;
+    grid-gap: 1em;
+}
+
+.btn .badge {
+    background: white;
+    color: brown;
+}
+
+.unpaid-sessions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(130px, 1fr));
+    grid-row-gap: 0.4em;
+}
+
+
+
+@media (min-width: 992px) {
+    #all-courses {
+        grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
+        grid-column-gap: 2em;
+    }
+
+    #amount-due {
+        justify-content: center;
+    }
+
+    .value {
+        margin-left: 6em;
+    }
+
+    .course-amount {
+        margin-left: 0.7em;
+    }
+
+    .unpaid-sessions {
+        grid-template-columns: auto;
+    }
 }

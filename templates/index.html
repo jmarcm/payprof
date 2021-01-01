@@ -8,18 +8,19 @@
             <span class="label">Total amount due:</span>
             <span class="value">{{ amount_due }}</span>
         </p>
-        <ul>
+        <ul id="all-courses">
             {% for course in courses %}
             <li>
-                <a href="/course/{{ course[0].id }}">
-                    {{ course[0].name }}
+                <a href="/course/{{ course[0].id }}" class="btn btn-brown">
+                    <span class="course-name">{{ course[0].name }}</span>
+                    <span class="course-amount badge">{{ course[1] }}</span>
                 </a>
-                <span class="pull-right">{{ course[1] }}</span>
-                <ul>
+                
+                <ol class="unpaid-sessions">
                     {% for session in courses[course] %}
                     <li>{{ session.date }}</li>
                     {% endfor %}
-                </ul>
+                </ol>
             </li>
             {% endfor %}
         </ul>
