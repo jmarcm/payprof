@@ -2,40 +2,38 @@
 
     {% block content %}
 
-        <section id="wrapper">
+        <section id="{{ page_name }}" class="container">
 
 
-            <h2>Login</h2>
+            <h1>Login</h1>
 
-        {% if current_user.is_authenticated %}
-            <div class="alert alert-warning">
-                <span class="icon">
-                    <i class="fas fa-exclamation-triangle fa-lg fa-fw"></i>
-                </span>                
-                <span class="text">Un utilisateur est déjà connecté</span>
-            </div>
-        {% endif %}
+            {% if current_user.is_authenticated %}
+                <div class="alert alert-warning">
+                    <span class="icon">
+                        <i class="fas fa-exclamation-triangle fa-lg fa-fw"></i>
+                    </span>                
+                    <span class="text">Un utilisateur est déjà connecté</span>
+                </div>
+            {% endif %}
 
-        <form method="post">
-            {{ form.hidden_tag() }}
-            <p class="username">
-                {{ form.username.label }}
-                {{ form.username()}}
-            </p>
-            <p class="password">
-                {{ form.password.label }}
-                {{ form.password( )}}
-            </p>
-            <p class="remember-me">
-                {{ form.remember.label }}
-                {{ form.remember() }}
-            </p>
-            <p>{{ form.login() }}</p>
-            
-        </form>
+            <form method="post">
+                {{ form.hidden_tag() }}
+                <p class="username">
+                    {{ form.username.label }}
+                    {{ form.username()}}
+                </p>
+                <p class="password">
+                    {{ form.password.label }}
+                    {{ form.password( )}}
+                </p>
+                <p class="remember-me">
+                    {{ form.remember.label }}
+                    {{ form.remember() }}
+                </p>
+                <p>{{ form.login() }}</p>
+                
+            </form>
         
         </section>
         
-        
-
     {% endblock %}

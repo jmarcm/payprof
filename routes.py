@@ -54,7 +54,7 @@ def login():
             return redirect(next_page) if next_page else redirect(url_for('index', _external=True))
         else:
             return redirect(url_for("login", _external=True))
-    return render_template("login.html", form=form)
+    return render_template("login.html", form=form, page_name="login")
 
 
 # manage route
