@@ -1,26 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payprof</title>
-</head>
-<body>
-    <nav>
-        <a href="/">Home</a> | 
-        <a href="/registration">Registration</a> | 
-        <a href="/login">Login</a> | 
-        <a href="/manage">Manage</a> |
-        <a href="/settings">Settings</a>        
-    </nav>
-    <h1>Manage</h1>
-    <ul>
-        {% for course in courses %}
-            <li><a href="/course/{{ course.id }}">{{ course.name }}</a></li>
-        {% endfor %}
-    </ul>
+{% extends "base.html" %}
+
+    {% block content %}
     
-</body>
-</html>
+    <section class="form-container">
 
+        <h1>Manage</h1>
+        <ul id="manage-cours">
+            {% for course in courses %}
+                <li><a href="/course/{{ course.id }}">{{ course.name }}</a></li>
+            {% endfor %}
+        </ul>
 
+    </section>
+    
+    {% endblock %}
