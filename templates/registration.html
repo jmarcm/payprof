@@ -1,40 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payprof</title>
-</head>
-<body>
-    <nav>
-        <a href="/">Home</a> |
-        <a href="/registration">Registration</a> | 
-        <a href="/login">Login</a> | 
-        <a href="/manage">Manage</a> |
-        <a href="/settings">Settings</a>        
-    </nav>
-    <h1>Registration</h1>
+{% extends "base.html" %}
 
-    <form method="POST">
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.username.label }}
-            {{ form.username() }}
-        </p>
-        <p>
-            {{ form.password.label }}
-            {{ form.password() }}
-        </p>
-        <p>
-            {{ form.password2.label }}
-            {{ form.password2() }}
-        </p>
-        <p>
-            {{ form.register() }}
-        </p>
-    </form>
+    {% block content %}
 
-</body>
-</html>
+        <section id="{{ page_name }}" class="form-container">
 
+            <h1>Registration</h1>
 
+            <form method="POST">
+                {{ form.hidden_tag() }}
+                <p>
+                    {{ form.username.label }}
+                    {{ form.username() }}
+                </p>
+                <p>
+                    {{ form.password.label }}
+                    {{ form.password() }}
+                </p>
+                <p>
+                    {{ form.password2.label }}
+                    {{ form.password2() }}
+                </p>
+                <p>
+                    {{ form.register() }}
+                </p>
+            </form>
+
+        </section>
+
+    {% endblock %}

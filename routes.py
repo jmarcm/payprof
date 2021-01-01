@@ -24,7 +24,7 @@ def registration():
 
         return render_template("registration-answer.html", failed=failed)
 
-    return render_template("registration.html", form=form)
+    return render_template("registration.html", form=form, page_name="registration")
 
 # user loader
 

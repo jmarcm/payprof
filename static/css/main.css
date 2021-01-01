@@ -157,13 +157,13 @@ nav a {
     /* color: cadetblue; */
 }
 
-.container {
+.form-container {
     margin-left: 0.3em;
     margin-right: 0.3em;
 }
 
 @media (min-width: 992px) {
-    .container {
+    .form-container {
         width: 30px;
         min-width: 500px;
         margin-left: auto;
