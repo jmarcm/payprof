@@ -450,3 +450,43 @@ nav a {
     }
     
 }
+
+/* FOOTER
+-----------------------------------------------*/
+
+#footer {
+    padding: 1.5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    font-size: small;
+    font-weight: 100;
+    background: #487a7c;
+    color: white;
+}
+
+#footer div ~ div {
+    margin-top: 0.5em;
+}
+
+#footer a {
+    
+    color: white;
+}
+
+#footer a .text {
+    border-bottom: 1px dotted white;
+}
+
+@media (min-width: 992px) {
+
+    #footer {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    #footer div ~ div {
+        margin-top: 0;
+    }
+}
