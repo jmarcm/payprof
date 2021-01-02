@@ -5,8 +5,8 @@
         <section class="main">
 
             {% if current_user.is_authenticated %}
-                <h2>Bienvenue {{ current_user.username }} !</h2>
-                <h3>Vos sessions en attente de paiement</h3>
+                <h2>Welcome {{ current_user.username }} !</h2>
+                <h3>Your sessions awaiting payment</h3>
                 <p id="amount-due">
                     <span class="label">Total amount due:</span>
                     <span class="value">{{ amount_due }}</span>
@@ -29,11 +29,11 @@
                 </ul>
             {% else %}
                 <h1>Bienvenue !</h1>
-                <div>
+                <div id="welcome-anonymous">
                     <p>
-                        Identifiez-vous pour accéder aux merveilleuses ressources de PayProf
+                        Log in to access the wonderful resources of PayProf!
                     </p>
-                    <a href="/login">Login</a>
+                    <a href="/login" class="btn">Login</a>
                 </div>
             {% endif %}
 
