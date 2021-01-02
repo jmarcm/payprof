@@ -274,7 +274,7 @@ nav a {
 
 #all-courses {
     display: grid;
-    grid-gap: 1em;
+    grid-gap: 1em 2em;
 }
 
 #all-courses .btn {
@@ -293,7 +293,14 @@ nav a {
     grid-row-gap: 0.4em;
 }
 
-
+#welcome-anonymous {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 2em;
+    font-size: large;
+    text-align: center;
+}
 
 @media (min-width: 992px) {
     #all-courses {
@@ -302,7 +309,7 @@ nav a {
     }
 
     #all-courses li {
-        flex-basis: 10em;
+        flex-basis: 15em;
     }
 
     #amount-due {
@@ -319,6 +326,10 @@ nav a {
 
     .unpaid-sessions {
         grid-template-columns: auto;
+    }
+
+    #welcome-anonymous {
+        font-size: x-large;
     }
 }
 
