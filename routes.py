@@ -124,7 +124,8 @@ def course(course_id):
         return redirect(url_for("course", course_id=course_id))
 
     return render_template(
-        "course.html", add_form=add_form, update_form=update_form, course=course, price_due=price_due
+        "course.html", add_form=add_form, update_form=update_form,
+        course=course, price_due=price_due, page_name="course"
     )
 
 
@@ -155,7 +156,7 @@ def settings():
         flash("Course added", "add_course")
         return redirect(url_for("settings"))
 
-    return render_template("settings.html", form=form, courses=courses)
+    return render_template("settings.html", form=form, courses=courses, page_name="settings")
 
 
 @app.route("/")

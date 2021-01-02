@@ -7,6 +7,7 @@ h3 {
 h1 {
     padding-bottom: 1px;
     border-bottom: 1px dotted darkmagenta;
+    font-size: 2em;
 }
 
 ul {
@@ -97,6 +98,9 @@ a {
     }
 }
 
+/* FORMS
+-----------------------------------------------*/
+
 input[type="text"],
 input[type="password"],
 input[type="submit"] {
@@ -115,6 +119,25 @@ input[type="checkbox"] {
     margin-left: 0.7em;
 }
 
+.checkbox {
+    flex-direction: row;
+}
+
+.input-button {
+    flex-direction: column;
+    /* align-items: center; */
+    grid-column: 1 /3;
+}
+
+form p {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* BODY
+-----------------------------------------------*/
+
 body {
     margin: 0;
     font-family: 'Open Sans', sans-serif;
@@ -129,7 +152,8 @@ body {
     }
 }
 
-/* NAVBAR */
+/* NAVBAR
+-----------------------------------------------*/
 
 nav {
     padding: 1em;
@@ -160,6 +184,24 @@ nav a {
     color: antiquewhite;
 }
 
+/* LIST
+-----------------------------------------------*/
+
+.course-list {
+    display: grid;
+    grid-row-gap: 1rem;
+    text-align: center;
+}
+
+.course-list a {
+    display: block;
+    padding: 0.6em;
+    border: 1px solid brown;
+    border-radius: 4px;
+    font-size: 1.2em;
+    color: brown;
+}
+
 .form-container,
 .container {
     margin-left: 0.3em;
@@ -182,7 +224,8 @@ nav a {
     }
 }
 
-/* HOME */
+/* HOME
+-----------------------------------------------*/
 #amount-due {
     display: flex;
     justify-content: space-between;
@@ -256,19 +299,16 @@ nav a {
     }
 }
 
-/* LOGIN */
-
-form p {
-    display: flex;
-    flex-direction: column;
-}
+/* LOGIN
+-----------------------------------------------*/
 
 .remember-me {
     flex-direction: row;
 }
 
 
-/* MANAGE */
+/* MANAGE
+-----------------------------------------------*/
 
 #manage-cours {
     display: grid;
@@ -297,7 +337,26 @@ form p {
     }
 }
 
-/* COURSE */
+/* COURSE
+-----------------------------------------------*/
+
+#course h1 {
+    grid-area: title;
+}
+
+#update-a-session {
+    grid-area: update;
+}
+
+#add-a-session {
+    grid-area: add;
+}
+
+#update-session {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 #update-session p {
     justify-content: center;
@@ -306,14 +365,62 @@ form p {
 
 #update-session p:last-child {
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
+    grid-column: 1 /3;
 }
 
 #update-session input[type="checkbox"] {
     width: 34px;
     height: 34px;
+    width: 29px;
+    height: 29px;
 }
 
 #update {
-    width: 263px;
+    /* width: 263px; */
+}
+
+
+
+@media (min-width: 992px) {
+
+    #course {
+        display: grid;
+        grid-template-columns: 200px auto;
+        grid-template-areas: "title title" "add update";
+        grid-column-gap: 4em;
+    }
+
+    #update-session {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-gap: 0.5rem 0.8rem;
+    }
+}
+
+
+/* SETTINGS
+-----------------------------------------------*/
+
+@media (min-width: 992px) {
+
+    #settings.container {
+        display: grid;
+        grid-template-columns: minmax(11em,auto) auto;
+        grid-template-areas: "title title" "list form";
+        grid-column-gap: 4rem;
+    }
+
+    #settings h1 {
+        grid-area: title;
+    }
+
+    #list {
+        grid-area: list;
+    }
+
+    #form {
+        grid-area: form;
+    }
+    
 }

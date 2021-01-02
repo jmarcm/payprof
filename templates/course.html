@@ -1,65 +1,72 @@
 {% extends "base.html" %}
 
-    {% block content %}
+{% block content %}
 
-    <section class="container">
+    <section id="{{ page_name}}" class="container">
 
     <h1>Course: {{ course.name }}</h1>
 
-    {% if price_due %}
-        <h2>Price due: {{price_due}} €</h2>
-    {% endif %}
+        <section id="update-a-session">
 
-    <form id="update-session" method="post">
+            {% if price_due %}
+                <h2>Price due: {{price_due}} €</h2>
+            {% endif %}
 
-        {{ update_form.hidden_tag() }}
+            <form id="update-session" method="post">
 
-        {% for session in update_form.sessions %}
-            <p>
-                {{ session.form.id() }}
+                {{ update_form.hidden_tag() }}
 
-                {{ session.form.date() }}
-                {% for error in session.form.date.errors %}
-                    <span style="color: red;">[{{ error }}]</span>
+                {% for session in update_form.sessions %}
+                    <p>
+                        {{ session.form.id() }}
+
+                        {{ session.form.date() }}
+                        {% for error in session.form.date.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
+
+                        {{ session.form.paid() }}
+                        {% for error in session.form.paid.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
+                        
+                    </p>
                 {% endfor %}
 
-                {{ session.form.paid() }}
-                {% for error in session.form.paid.errors %}
-                    <span style="color: red;">[{{ error }}]</span>
-                {% endfor %}
+                <p class="input-button">
+                    {{ update_form.update() }}
+                </p>
                 
-            </p>
-        {% endfor %}
+            </form>
 
-        <p>
-            {{ update_form.update() }}
-        </p>
-        
-    </form>
+        </section>
 
+        <section id="add-a-session">
 
-    <h2>Ajouter une session</h2>
+            <h2>Add a session</h2>
 
-    <form id="add-session" method="POST">
-        
-        {{ add_form.hidden_tag() }}
+            <form id="add-session" method="POST">
+                
+                {{ add_form.hidden_tag() }}
 
-        <p>
-            {{ add_form.date.label}}
-            {{ add_form.date() }}
-        </p>
+                <p>
+                    {{ add_form.date.label}}
+                    {{ add_form.date() }}
+                </p>
 
-        <p>
-            {{ add_form.paid.label }}
-            {{ add_form.paid() }}
-        </p>
+                <p class="checkbox">
+                    {{ add_form.paid.label }}
+                    {{ add_form.paid() }}
+                </p>
 
-        <p>
-            {{ add_form.add() }}
-        </p>
+                <p class="input-button">
+                    {{ add_form.add() }}
+                </p>
 
-    </form>
+            </form>
+
+        </section>
 
     </section>
 
-    {% endblock %}
+{% endblock %}

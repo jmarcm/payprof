@@ -1,70 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payprof</title>
-</head>
+{% block content %}
 
-<body>
+    <section id="{{ page_name }}" class="container">
 
-    <nav>
-        <a href="/">Home</a> | 
-        <a href="/registration">Registration</a> | 
-        <a href="/login">Login</a> | 
-        <a href="/manage">Manage</a> |
-        <a href="/settings">Settings</a>        
-    </nav>
+        <h1>Settings</h1>
 
-    <h1>Settings</h1>
+        <section id="list">
 
-    <h2>Liste des cours</h2>
+            <h2>Liste des cours</h2>
 
-        <ul>
-            {% for course in courses %}
-                <li>{{course.name}}</li>
+            <ul class="course-list">
+                {% for course in courses %}
+                    <li>
+                        <a href="/course/{{ course.id }}">{{course.name}}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        
+        </section>
+
+        <section id="form">
+
+            <h2>Add a course</h2>
+
+            {% for category, message in get_flashed_messages(with_categories=true) %}
+                {% if category == "add_course" %}
+                    <p class="{{ category }}">{{ message }}</p>
+                {% endif %}
             {% endfor %}
-        </ul>
-    
 
+            <form id="add-course" method="post">
 
-    <h2>Add a course</h2>
+                {{ form.hidden_tag() }}
 
-    {% for category, message in get_flashed_messages(with_categories=true) %}
-        {% if category == "add_course" %}
-            <p class="{{ category }}">{{ message }}</p>
-        {% endif %}
-    {% endfor %}
+                <p>
+                    {{ form.name.label }}
+                    {{ form.name() }}
+                </p>
+                <p>
+                    {{ form.meeting_day.label }}
+                    {{ form.meeting_day() }}
+                </p>
+                <p>
+                    {{ form.meeting_time.label }}
+                    {{ form.meeting_time() }}
+                </p>
+                <p>
+                    {{ form.price.label }}
+                    {{ form.price() }}
+                </p>
+                <p class="input-button">
+                    {{ form.send() }}
+                </p>
 
-    <form id="add-course" method="post">
+            </form>
 
-        {{ form.hidden_tag() }}
+        </section>
 
-        <p>
-            <span>{{ form.name.label }}</span>
-            <span>{{ form.name() }}</span>
-        <!-- </p> -->
-        <p>
-            <span>{{ form.meeting_day.label }}</span>
-            <span>{{ form.meeting_day() }}</span>
-        </p>
-        <p>
-            <span>{{ form.meeting_time.label }}</span>
-            <span>{{ form.meeting_time() }}</span>
-        </p>
-        <p>
-            <span>{{ form.price.label }}</span>
-            <span>{{ form.price() }}</span>
-        </p>
-        <p>
-            {{ form.send() }}
-        </p>
+    </section>
 
-    </form>
-
-</body>
-
-</html>
-
-
+{% endblock %}
