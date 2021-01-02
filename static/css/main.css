@@ -161,8 +161,10 @@ input[type="checkbox"] {
 
 body {
     margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
     font-family: 'Open Sans', sans-serif;
-    /* margin: 1.5em; */
 }
 
 @media (min-width: 992px) {
@@ -228,21 +230,25 @@ nav a {
     color: white;
 }
 
-.form-container,
-.container {
+/* MAIN
+-----------------------------------------------*/
+
+.main {
     margin-left: 0.3em;
     margin-right: 0.3em;
+    flex-grow: 2;
 }
 
 @media (min-width: 992px) {
-    .form-container {
+
+    .main-30 {
         width: 30%;
         min-width: 500px;
         margin-left: auto;
         margin-right: auto;
     }
 
-    .container {
+    .main-50 {
         width: 50%;
         min-width: 500px;
         margin-left: auto;
@@ -430,7 +436,7 @@ nav a {
 
 @media (min-width: 992px) {
 
-    #settings.container {
+    #settings.main {
         display: grid;
         grid-template-columns: minmax(11em,auto) auto;
         grid-template-areas: "title title" "list form";
@@ -462,7 +468,7 @@ nav a {
 
     font-size: small;
     font-weight: 100;
-    background: #487a7c;
+    background: cadetblue; /*#487a7c; */
     color: white;
 }
 
