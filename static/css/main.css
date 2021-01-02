@@ -296,3 +296,24 @@ form p {
         line-height: 100px;
     }
 }
+
+/* COURSE */
+
+#update-session p {
+    justify-content: center;
+    flex-direction: row;
+}
+
+#update-session p:last-child {
+    flex-direction: column;
+    align-items: center;
+}
+
+#update-session input[type="checkbox"] {
+    width: 34px;
+    height: 34px;
+}
+
+#update {
+    width: 263px;
+}

@@ -1,18 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payprof</title>
-</head>
-<body>
-    <nav>
-        <a href="/">Home</a> | 
-        <a href="/registration">Registration</a> | 
-        <a href="/login">Login</a> | 
-        <a href="/manage">Manage</a> |
-        <a href="/settings">Settings</a>        
-    </nav>
+{% extends "base.html" %}
+
+    {% block content %}
+
+    <section class="container">
 
     <h1>Course: {{ course.name }}</h1>
 
@@ -20,7 +10,7 @@
         <h2>Price due: {{price_due}} €</h2>
     {% endif %}
 
-    <form action="" method="post">
+    <form id="update-session" method="post">
 
         {{ update_form.hidden_tag() }}
 
@@ -41,14 +31,16 @@
             </p>
         {% endfor %}
 
-        {{ update_form.update() }}
+        <p>
+            {{ update_form.update() }}
+        </p>
+        
     </form>
 
-    
 
-    <h3>Ajouter une session</h3>
+    <h2>Ajouter une session</h2>
 
-    <form method="POST">
+    <form id="add-session" method="POST">
         
         {{ add_form.hidden_tag() }}
 
@@ -68,6 +60,6 @@
 
     </form>
 
-   
-</body>
-</html>
+    </section>
+
+    {% endblock %}
