@@ -223,6 +223,11 @@ nav a {
     color: brown;
 }
 
+.course-list a:hover {
+    background: brown;
+    color: white;
+}
+
 .form-container,
 .container {
     margin-left: 0.3em;
