@@ -2,13 +2,14 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_fontawesome import FontAwesome
+from os import environ
 
 # instantiate application
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "very-confidential-secret"
 
 # instantiate database
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///payprof.db"
+app.config['SQLALCHEMY_DATABASE_URI'] = environ.get("DATABASE_URL") or "sqlite:///payprof.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
