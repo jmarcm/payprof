@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_fontawesome import FontAwesome
 
+
 # instantiate application
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "very-confidential-secret"
