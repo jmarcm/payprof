@@ -5,35 +5,34 @@ from forms import *
 from flask_login import current_user, login_user, logout_user, login_required
 from functions import *
 
-
+# registration route
 @app.route("/registration", methods=['GET', 'POST'])
 def registration():
     form = RegistrationForm()
-    failed = None
 
     if form.validate_on_submit():
         user = User(username=form.username.data)
         user.setPassword(form.password.data)
         db.session.add(user)
 
-        failed = False
+        
         try:
             db.session.commit()
+            success = True
         except:
-            failed = True
+            success = False
 
-        return render_template("registration-answer.html", failed=failed)
+        if success :
+            return redirect(url_for("login"))
 
     return render_template("registration.html", form=form, page_name="registration")
 
 # user loader
-
-
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-
+# logout route
 @app.route("/logout")
 @login_required
 def logout():
@@ -41,6 +40,7 @@ def logout():
     return redirect(url_for("index"))
 
 
+# login route
 @app.route("/login", methods=["GET", "POST"])
 def login():
     form = LoginForm()
@@ -159,8 +159,10 @@ def settings():
     return render_template("settings.html", form=form, courses=courses, page_name="settings")
 
 
+# landing page route
 @app.route("/")
 def index():
     # courses = Course.query.filter_by(user_id=current_user.get_id()).all()
     courses, amount_due = get_user_all_courses_unpaid(current_user.get_id())
+    print(courses)
     return render_template("index.html", courses=courses, amount_due=amount_due)
