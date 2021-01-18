@@ -19,6 +19,10 @@ ul {
     float: right;
 }
 
+.text-center {
+    text-align: center;
+}
+
 a {
     text-decoration: none;
 }
@@ -430,6 +434,7 @@ nav a {
     #course {
         display: grid;
         grid-template-columns: 200px auto;
+        grid-template-rows: auto 1fr;
         grid-template-areas: "title title" "add update";
         grid-column-gap: 4em;
     }
@@ -450,6 +455,7 @@ nav a {
     #settings.main {
         display: grid;
         grid-template-columns: minmax(11em,auto) auto;
+        grid-template-rows: auto 1fr;
         grid-template-areas: "title title" "list form";
         grid-column-gap: 4rem;
     }

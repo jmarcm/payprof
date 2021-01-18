@@ -5,35 +5,51 @@
         <section class="main">
 
             {% if current_user.is_authenticated %}
+
                 <h2>Welcome {{ current_user.username }} !</h2>
-                <h3>Your sessions awaiting payment</h3>
-                <p id="amount-due">
-                    <span class="label">Total amount due:</span>
-                    <span class="value">{{ amount_due }}</span>
-                </p>
-                <ul id="all-courses">
-                    {% for course in courses %}
-                    <li>
-                        <a href="/course/{{ course[0].id }}" class="btn btn-brown">
-                            <span class="course-name">{{ course[0].name }}</span>
-                            <span class="course-amount badge">{{ course[1] }}</span>
-                        </a>
-                        
-                        <ol class="unpaid-sessions">
-                            {% for session in courses[course] %}
-                            <li>{{ session.date }}</li>
-                            {% endfor %}
-                        </ol>
-                    </li>
-                    {% endfor %}
-                </ul>
+
+                {% if not courses %}
+
+                    <div class="text-center">
+                        <p>You have no course for the moment.</p>
+                        <p>Go to <a href="/settings">Settings</a> to add one.</p>
+                    </div>
+
+                {% else %}
+
+                    <h3>Your sessions awaiting payment</h3>
+                    <p id="amount-due">
+                        <span class="label">Total amount due:</span>
+                        <span class="value">{{ amount_due }}</span>
+                    </p>
+                    <ul id="all-courses">
+                        {% for course in courses %}
+                        <li>
+                            <a href="/course/{{ course[0].id }}" class="btn btn-brown">
+                                <span class="course-name">{{ course[0].name }}</span>
+                                <span class="course-amount badge">{{ course[1] }}</span>
+                            </a>
+                            
+                            <ol class="unpaid-sessions">
+                                {% for session in courses[course] %}
+                                <li>{{ session.date }}</li>
+                                {% endfor %}
+                            </ol>
+                        </li>
+                        {% endfor %}
+                    </ul>
+
+                {% endif %}
+
             {% else %}
                 <h1>Bienvenue !</h1>
                 <div id="welcome-anonymous">
                     <p>
                         Log in to access the wonderful resources of PayProf!
                     </p>
-                    <a href="/login" class="btn">Login</a>
+                    <p>
+                        <a href="/login">Login</a> or <a href="/registration">Register</a>
+                    </p>
                 </div>
             {% endif %}
 
